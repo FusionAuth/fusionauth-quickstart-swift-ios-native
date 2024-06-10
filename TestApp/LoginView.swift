@@ -30,13 +30,9 @@ struct LoginView: View {
                 
                 Task {
                     do {
-                        
-                        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-                        let presentingView = windowScene?.windows.first?.rootViewController
-                        
                         try await AuthorizationManager.instance
                             .oauth()
-                            .authorize(options: OAuthAuthorizeOptions(), view: presentingView!)
+                            .authorize(options: OAuthAuthorizeOptions())
                     } catch {
                         print("Error occured")
                     }

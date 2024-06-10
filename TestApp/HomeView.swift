@@ -40,13 +40,9 @@ struct HomeView: View {
                     
                     Task {
                         do {
-                            
-                            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-                            let presentingView = windowScene?.windows.first?.rootViewController
-                            
                             try await AuthorizationManager.instance
                                 .oauth()
-                                .logout(options: OAuthLogoutOptions(), view: presentingView!)
+                                .logout(options: OAuthLogoutOptions())
                         } catch let error as NSError {
                             print(error)
                         }
