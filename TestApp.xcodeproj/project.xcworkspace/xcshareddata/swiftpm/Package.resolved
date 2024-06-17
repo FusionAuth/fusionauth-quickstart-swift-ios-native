@@ -1,5 +1,5 @@
 {
-  "originHash" : "a24afdafb2d3e8e916876274746de0f80bfecd126036b2f57f48ec3c217df0f0",
+  "originHash" : "55a7a2999275105439bfc40cb729621f01a8b59b5191ead0042417a14848d7eb",
   "pins" : [
     {
       "identity" : "appauth-ios",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "c9c3df6ab812de32bae61fc0cd1bf6d45170ebf0",
         "version" : "1.8.2"
+      }
+    },
+    {
+      "identity" : "fusionauth-ios-mobilesdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sonderformat-llc/fusionauth-ios-mobilesdk.git",
+      "state" : {
+        "branch" : "prototype",
+        "revision" : "2cdf65f9cf85a7a8382b6ca89f14458a4a2be538"
       }
     },
     {
