@@ -11,10 +11,10 @@ import FusionAuth
 struct HomeView: View {
     @EnvironmentObject var userAuth: FusionAuthState
     @State var userInfo: UserInfo?
-    
+
     var body: some View {
         if userInfo == nil {
-            VStack{
+            VStack {
                 ProgressView()
                     .padding()
                 Text("Retrieving user info")
@@ -23,21 +23,20 @@ struct HomeView: View {
                 getUserInfo()
             }
         } else {
-            VStack{
+            VStack {
                 Text("Welcome \(userInfo?.given_name ?? "") \(userInfo?.family_name ?? "")")
                     .padding(.bottom, 20).font(.headline)
                 Text("Your balance is:")
                 Text("$0.00").font(.largeTitle)
-                Button("Log out"){
+                Button("Log out") {
                     AuthorizationManager.instance
                         .initialize(configuration:
                         AuthorizationConfiguration(
                             clientId: "e9fdb985-9173-4e01-9d73-ac2d60d1dc8e",
                             fusionAuthUrl: "http://localhost:9011",
                             additionalScopes: ["email", "profile"]
-                        ), storage:""
+                        ), storage: ""
                     )
-                    
                     Task {
                         do {
                             try await AuthorizationManager.instance
@@ -48,11 +47,10 @@ struct HomeView: View {
                         }
                     }
                 }.buttonStyle(SecondaryButtonStyle())
-            
             }
         }
     }
-    
+
     func getUserInfo() {
         AuthorizationManager.instance
             .initialize(configuration:
@@ -60,9 +58,8 @@ struct HomeView: View {
                 clientId: "e9fdb985-9173-4e01-9d73-ac2d60d1dc8e",
                 fusionAuthUrl: "http://localhost:9011",
                 additionalScopes: ["email", "profile"]
-            ), storage:""
+            ), storage: ""
         )
-        
         Task {
             do {
                 self.userInfo = try await AuthorizationManager.instance

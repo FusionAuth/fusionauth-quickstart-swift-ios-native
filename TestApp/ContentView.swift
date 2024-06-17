@@ -10,12 +10,12 @@ import FusionAuth
 import UIKit
 
 struct ContentView: View {
-    
-    @EnvironmentObject var authState: FusionAuthState;
-    
+
+    @EnvironmentObject var authState: FusionAuthState
+
     var body: some View {
         VStack {
-            if(authState.isLoggedIn()) {
+            if authState.isLoggedIn() {
                 LoggedInView()
             } else {
                 LoginView()

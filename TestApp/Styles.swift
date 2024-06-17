@@ -7,7 +7,6 @@ import Foundation
 import SwiftUI
 
 struct PrimaryButtonStyle: ButtonStyle {
-    
     var color: Color = Color(red: 0.0353, green: 0.3882, blue: 0.1412)
     func makeBody(configuration: Configuration) -> some View {
         configuration.label.padding([
@@ -17,11 +16,10 @@ struct PrimaryButtonStyle: ButtonStyle {
     }
 }
 
-
 struct SecondaryButtonStyle: ButtonStyle {
     var color: Color = .white
     var textColor: Color = Color(red: 0.0353, green: 0.3882, blue: 0.1412)
-    
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding([.trailing, .leading], 48)
@@ -33,8 +31,8 @@ struct SecondaryButtonStyle: ButtonStyle {
     }
 }
 
-
 struct CurrencyTextFieldStyle: TextFieldStyle {
+    // swiftlint:disable:next identifier_name
     func _body(configuration: TextField<Self._Label>) -> some View {
         HStack {
             Text("$").foregroundColor(Color(red: 0.0353, green: 0.3882, blue: 0.1412))
