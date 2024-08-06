@@ -9,15 +9,15 @@ import SwiftUI
 import FusionAuth
 
 struct LoginView: View {
-    
+
     var body: some View {
         VStack {
             Image("changebank")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-            
+
             Text("Welcome to ChangeBank!")
-            
+
             Button("Login") {
                 AuthorizationManager.instance
                     .initialize(configuration:
@@ -25,9 +25,9 @@ struct LoginView: View {
                         clientId: "e9fdb985-9173-4e01-9d73-ac2d60d1dc8e",
                         fusionAuthUrl: "http://localhost:9011",
                         additionalScopes: ["email", "profile"]
-                    ), storage:""
+                    ), storage: ""
                 )
-                
+
                 Task {
                     do {
                         try await AuthorizationManager.instance
@@ -38,7 +38,7 @@ struct LoginView: View {
                     }
                 }
             }.buttonStyle(PrimaryButtonStyle())
-            
+
         }
         .padding()
     }

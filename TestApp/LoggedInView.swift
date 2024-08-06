@@ -19,7 +19,7 @@ struct LoggedInView: View {
                 Spacer()
             }
             .frame(maxWidth: .infinity, alignment: .topLeading)
-            
+
             TabView {
                 HomeView().tabItem {
                     Label("Home", systemImage: "house")
