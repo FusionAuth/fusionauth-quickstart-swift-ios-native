@@ -34,7 +34,7 @@ jobs:
 
       # Performs analysis using Swift Lint and outputs a Sarif Report
       - name: GitHub Action for SwiftLint
-        uses: stanfordbdhg/action-swiftlint@v4
+        uses: stanfordbdhg/action-swiftlint@v4.0.0
         with:
           args: --reporter sarif --output lint-results-debug.sarif
           # https://github.com/realm/SwiftLint/issues/4048
