@@ -1,5 +1,5 @@
 {
-  "originHash" : "173fd7fb07de5b8fd8af261e216e2c1f97655e8005dd14e374e85641ac82ac69",
+  "originHash" : "53c777d61be3ed95db3abc8e5d1e7b437e3657688e734ecf984f3f3b320ddb28",
   "pins" : [
     {
       "identity" : "appauth-ios",
@@ -29,6 +29,15 @@
       }
     },
     {
+      "identity" : "fusionauth-swift-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sonderformat-llc/fusionauth-swift-sdk",
+      "state" : {
+        "branch" : "main",
+        "revision" : "757b1cc13d679d710be8366f9e74a69a8e0e89a7"
+      }
+    },
+    {
       "identity" : "sourcekitten",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jpsim/SourceKitten.git",
@@ -47,24 +56,6 @@
       }
     },
     {
-      "identity" : "swift-docc-plugin",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swiftlang/swift-docc-plugin",
-      "state" : {
-        "revision" : "2eb22993b3dfd0c0d32729b357c8dabb6cd44680",
-        "version" : "1.4.2"
-      }
-    },
-    {
-      "identity" : "swift-docc-symbolkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swiftlang/swift-docc-symbolkit",
-      "state" : {
-        "revision" : "b45d1f2ed151d057b54504d653e0da5552844e34",
-        "version" : "1.0.0"
-      }
-    },
-    {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftlang/swift-syntax.git",
@@ -78,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/SwiftLint.git",
       "state" : {
-        "revision" : "a24488f26e60247d8fff7bbb03d51910af3dc91c",
-        "version" : "0.56.2"
+        "revision" : "168fb98ed1f3e343d703ecceaf518b6cf565207b",
+        "version" : "0.57.0"
       }
     },
     {

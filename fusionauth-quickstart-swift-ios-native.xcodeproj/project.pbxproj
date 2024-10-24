@@ -18,9 +18,9 @@
 		0E8454CC2BF50CE8007C5E0D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8454CB2BF50CE8007C5E0D /* HomeView.swift */; };
 		0E8454CE2BF50D19007C5E0D /* MakeChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8454CD2BF50D19007C5E0D /* MakeChangeView.swift */; };
 		0EB018B82C830E8A00503908 /* AuthorizationManager+Initialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB018B72C830E8A00503908 /* AuthorizationManager+Initialization.swift */; };
-		9326C2A12C80692B001C9CDB /* fusionauth-ios-mobilesdk in Resources */ = {isa = PBXBuildFile; fileRef = 9326C2A02C80692B001C9CDB /* fusionauth-ios-mobilesdk */; };
 		939AED192CC91492000E2D3F /* QuickstartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939AED162CC91492000E2D3F /* QuickstartTests.swift */; };
 		939AED1A2CC91492000E2D3F /* QuickstartTestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939AED172CC91492000E2D3F /* QuickstartTestsLaunchTests.swift */; };
+		93B89F712CCA999D006190F3 /* FusionAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 93B89F702CCA999D006190F3 /* FusionAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,6 @@
 		0E8454CB2BF50CE8007C5E0D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0E8454CD2BF50D19007C5E0D /* MakeChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeChangeView.swift; sourceTree = "<group>"; };
 		0EB018B72C830E8A00503908 /* AuthorizationManager+Initialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthorizationManager+Initialization.swift"; sourceTree = "<group>"; };
-		9326C2A02C80692B001C9CDB /* fusionauth-ios-mobilesdk */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "fusionauth-ios-mobilesdk"; path = ../../..; sourceTree = "<group>"; };
 		939AED162CC91492000E2D3F /* QuickstartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickstartTests.swift; sourceTree = "<group>"; };
 		939AED172CC91492000E2D3F /* QuickstartTestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickstartTestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93B89F712CCA999D006190F3 /* FusionAuth in Frameworks */,
 				0E3A85562BD94071008D2419 /* FusionAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,7 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				0E2795F72BD937B800738892 /* Quickstart */,
-				9326C2432C8067DA001C9CDB /* Packages */,
 				939AED182CC91492000E2D3F /* QuickstartTests */,
 				0E2795F62BD937B800738892 /* Products */,
 				0E8454C42BF50595007C5E0D /* Frameworks */,
@@ -120,14 +119,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9326C2432C8067DA001C9CDB /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				9326C2A02C80692B001C9CDB /* fusionauth-ios-mobilesdk */,
-			);
-			path = Packages;
 			sourceTree = "<group>";
 		};
 		939AED182CC91492000E2D3F /* QuickstartTests */ = {
@@ -177,6 +168,7 @@
 			name = "fusionauth-quickstart-swift-ios-native";
 			packageProductDependencies = (
 				0E3A85552BD94071008D2419 /* FusionAuth */,
+				93B89F702CCA999D006190F3 /* FusionAuth */,
 			);
 			productName = Quickstart;
 			productReference = 0E2795F52BD937B800738892 /* fusionauth-quickstart-swift-ios-native.app */;
@@ -211,6 +203,7 @@
 			);
 			mainGroup = 0E2795EC2BD937B800738892;
 			packageReferences = (
+				93B89F6F2CCA999D006190F3 /* XCRemoteSwiftPackageReference "fusionauth-swift-sdk" */,
 			);
 			productRefGroup = 0E2795F62BD937B800738892 /* Products */;
 			projectDirPath = "";
@@ -235,7 +228,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E2796002BD937BA00738892 /* Preview Assets.xcassets in Resources */,
-				9326C2A12C80692B001C9CDB /* fusionauth-ios-mobilesdk in Resources */,
 				0E2795FD2BD937BA00738892 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,9 +521,25 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		93B89F6F2CCA999D006190F3 /* XCRemoteSwiftPackageReference "fusionauth-swift-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sonderformat-llc/fusionauth-swift-sdk";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		0E3A85552BD94071008D2419 /* FusionAuth */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = FusionAuth;
+		};
+		93B89F702CCA999D006190F3 /* FusionAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93B89F6F2CCA999D006190F3 /* XCRemoteSwiftPackageReference "fusionauth-swift-sdk" */;
 			productName = FusionAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
