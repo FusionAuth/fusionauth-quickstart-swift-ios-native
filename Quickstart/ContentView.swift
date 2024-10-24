@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  TestApp
+//  Quickstart
 //
 //  Created by Colin Frick on 24.04.24.
 //

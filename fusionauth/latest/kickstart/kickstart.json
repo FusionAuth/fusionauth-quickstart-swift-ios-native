@@ -65,10 +65,10 @@
       "tenantId": "#{defaultTenantId}",
       "body": {
         "application": {
-          "name": "Example Android App",
+          "name": "Example iOS Quickstart",
           "oauthConfiguration": {
             "authorizedRedirectURLs": [
-              "io.fusionauth.app:/oauth2redirect"
+              "io.fusionauth.Quickstart:/oauth2redirect/ios-provider"
             ],
             "generateRefreshTokens": true,
             "clientAuthenticationPolicy": "NotRequired",
@@ -97,7 +97,7 @@
           "name": "Secondary Application",
           "oauthConfiguration": {
             "authorizedRedirectURLs": [
-              "io.fusionauth.app:/oauth2redirect"
+              "io.fusionauth.Quickstart:/oauth2redirect/ios-provider"
             ],
             "generateRefreshTokens": true,
             "clientAuthenticationPolicy": "NotRequired",

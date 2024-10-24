@@ -1,6 +1,6 @@
 //
 //  LoginView.swift
-//  TestApp
+//  Quickstart
 //
 //  Created by Colin Frick on 15.05.24.
 //
@@ -19,18 +19,9 @@ struct LoginView: View {
             Text("Welcome to ChangeBank!")
 
             Button("Login") {
-                AuthorizationManager.instance
-                    .initialize(configuration:
-                    AuthorizationConfiguration(
-                        clientId: "e9fdb985-9173-4e01-9d73-ac2d60d1dc8e",
-                        fusionAuthUrl: "http://localhost:9011",
-                        additionalScopes: ["email", "profile"]
-                    ), storage: ""
-                )
-
                 Task {
                     do {
-                        try await AuthorizationManager.instance
+                        try await AuthorizationManager.shared
                             .oauth()
                             .authorize(options: OAuthAuthorizeOptions())
                     } catch {
