@@ -1,10 +1,3 @@
-//
-//  LoggedInView.swift
-//  Quickstart
-//
-//  Created by Colin Frick on 15.05.24.
-//
-
 import SwiftUI
 
 struct LoggedInView: View {
@@ -13,7 +6,7 @@ struct LoggedInView: View {
             HStack {
                 Image("changebank")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
                     .frame(width: 150)
                     .padding()
                 Spacer()
@@ -32,6 +25,14 @@ struct LoggedInView: View {
     }
 }
 
+#if swift(>=5.9)
 #Preview {
     LoggedInView()
 }
+#else
+struct LoggedInView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoggedInView()
+    }
+}
+#endif

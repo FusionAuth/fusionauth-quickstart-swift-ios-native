@@ -1,10 +1,3 @@
-//
-//  MakeChangeView.swift
-//  Quickstart
-//
-//  Created by Colin Frick on 15.05.24.
-//
-
 import SwiftUI
 
 struct MakeChangeView: View {
@@ -34,7 +27,7 @@ struct MakeChangeView: View {
             changeOutput = "Please enter a dollar amount to convert. "
             return
         }
-        value = Double(Int(value * 100))/100 // truncate to 2 decimals to look like money
+        value = Double(Int(value * 100)) / 100 // truncate to 2 decimals to look like money
         let totalPennies = Int(value * 100)
         nickels = totalPennies / 5
         pennies = totalPennies % 5
@@ -43,10 +36,17 @@ struct MakeChangeView: View {
         let nickelUnit = nickels != 1 ? "nickels" : "nickel"
 
         changeOutput = "We can make change for $\(value) with \(nickels) \(nickelUnit) and \(pennies) \(pennyUnit)"
-
     }
 }
 
+#if swift(>=5.9)
 #Preview {
     MakeChangeView()
 }
+#else
+struct MakeChangeView_Previews: PreviewProvider {
+    static var previews: some View {
+        MakeChangeView()
+    }
+}
+#endif

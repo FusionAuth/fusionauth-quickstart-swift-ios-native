@@ -1,15 +1,7 @@
-//
-//  HomeView.swift
-//  Quickstart
-//
-//  Created by Colin Frick on 15.05.24.
-//
-
 import SwiftUI
 import FusionAuth
 
 struct HomeView: View {
-    @EnvironmentObject var userAuth: FusionAuthState
     @State var userInfo: UserInfo?
 
     var body: some View {
@@ -38,15 +30,15 @@ struct HomeView: View {
                 Button("Refresh token") {
                     Task {
                         do {
-                            let accessToken = try await AuthorizationManager.shared
+                            let accessToken = try await AuthorizationManager
                                 .oauth()
                                 .freshAccessToken()
-                            
-                            guard let accessToken = accessToken else {
+
+                            guard let accessToken else {
                                 print("Access token is not returned")
                                 return
                             }
-                            
+
                             print("Refreshed access token: \(accessToken)")
                         } catch let error as NSError {
                             print(error)
@@ -56,7 +48,7 @@ struct HomeView: View {
                 Button("Log out") {
                     Task {
                         do {
-                            try await AuthorizationManager.shared
+                            try await AuthorizationManager
                                 .oauth()
                                 .logout(options: OAuthLogoutOptions())
                         } catch let error as NSError {
@@ -71,7 +63,7 @@ struct HomeView: View {
     func getUserInfo() {
         Task {
             do {
-                self.userInfo = try await AuthorizationManager.shared
+                self.userInfo = try await AuthorizationManager
                     .oauth()
                     .userInfo()
             } catch let error as NSError {
@@ -81,6 +73,14 @@ struct HomeView: View {
     }
 }
 
+#if swift(>=5.9)
 #Preview {
     HomeView()
 }
+#else
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+    }
+}
+#endif

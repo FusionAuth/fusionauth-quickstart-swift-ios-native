@@ -1,40 +1,52 @@
-//
-//  LoginView.swift
-//  Quickstart
-//
-//  Created by Colin Frick on 15.05.24.
-//
-
 import SwiftUI
 import FusionAuth
 
 struct LoginView: View {
+    @State private var errorWhileLogin = false
+    @State private var error: String?
 
     var body: some View {
         VStack {
             Image("changebank")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .scaledToFit()
 
             Text("Welcome to ChangeBank!")
 
             Button("Login") {
                 Task {
                     do {
-                        try await AuthorizationManager.shared
+                        try await AuthorizationManager
                             .oauth()
                             .authorize(options: OAuthAuthorizeOptions())
-                    } catch {
-                        print("Error occured")
+                    } catch let error as NSError {
+                        self.errorWhileLogin = true
+                        self.error = error.localizedDescription
                     }
                 }
             }.buttonStyle(PrimaryButtonStyle())
-
         }
         .padding()
+        .alert(
+            "Error occured while logging in",
+            isPresented: $errorWhileLogin,
+            presenting: error
+        ) { _ in
+            Button("OK", role: .cancel) { errorWhileLogin = false }
+        } message: { error in
+            Text(error)
+        }
     }
 }
 
+#if swift(>=5.9)
 #Preview {
     LoginView()
 }
+#else
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView()
+    }
+}
+#endif
