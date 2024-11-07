@@ -38,15 +38,3 @@ struct MakeChangeView: View {
         changeOutput = "We can make change for $\(value) with \(nickels) \(nickelUnit) and \(pennies) \(pennyUnit)"
     }
 }
-
-#if swift(>=5.9)
-#Preview {
-    MakeChangeView()
-}
-#else
-struct MakeChangeView_Previews: PreviewProvider {
-    static var previews: some View {
-        MakeChangeView()
-    }
-}
-#endif

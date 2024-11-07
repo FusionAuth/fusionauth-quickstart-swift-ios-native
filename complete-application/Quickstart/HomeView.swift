@@ -72,15 +72,3 @@ struct HomeView: View {
         }
     }
 }
-
-#if swift(>=5.9)
-#Preview {
-    HomeView()
-}
-#else
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
-#endif
