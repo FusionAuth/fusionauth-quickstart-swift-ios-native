@@ -1,0 +1,24 @@
+{
+  "originHash" : "53c777d61be3ed95db3abc8e5d1e7b437e3657688e734ecf984f3f3b320ddb28",
+  "pins" : [
+    {
+      "identity" : "appauth-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/openid/AppAuth-iOS.git",
+      "state" : {
+        "revision" : "2781038865a80e2c425a1da12cc1327bcd56501f",
+        "version" : "1.7.6"
+      }
+    },
+    {
+      "identity" : "fusionauth-swift-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sonderformat-llc/fusionauth-swift-sdk",
+      "state" : {
+        "revision" : "3c1b56519671a1ad80dc7cd0d09d3c7d1eee6ee4",
+        "version" : "0.3.0"
+      }
+    }
+  ],
+  "version" : 3
+}
