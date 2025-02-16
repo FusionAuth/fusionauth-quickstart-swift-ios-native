@@ -57,7 +57,7 @@ final class QuickstartTests: XCTestCase {
         passwordField.tap()
         passwordField.typeText("password")
 
-        submitButton.tap()
+        passwordField.typeText("\n")
 
         // Check that Welcome message is displayed
         let welcomeText = app.staticTexts["Welcome Richard Hendricks"]
