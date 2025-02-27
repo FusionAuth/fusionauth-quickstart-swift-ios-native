@@ -66,11 +66,11 @@ Please follow the following sections for further information about the Quickstar
 
 ### Quickstart
 
-See the [FusionAuth Swift iOS Quickstart](https://fusionauth.io/docs/quickstarts/quickstart-android-java-native-fusionauth-sdk/) for a full tutorial on using FusionAuth and iOS.
+See the [FusionAuth Swift iOS Quickstart](https://fusionauth.io/docs/quickstarts/quickstart-swift-ios-native/) for a full tutorial on using FusionAuth and iOS.
 
 ### Documentation FusionAuth Android SDK
 
-See the [FusionAuth Swift SDK Documentation](https://fusionauth.io/docs/sdks/swift-sdk) for an overview to the SDK. Or see the latest [Full library documentation](https://github.com/sonderformat-llc/fusionauth-swift-sdk/tree/main/Documentation/Reference) for the complete documentation of the SDK.
+See the [FusionAuth Swift SDK Documentation](https://fusionauth.io/docs/sdks/swift-sdk) for an overview to the SDK. Or see the latest [Full library documentation](https://github.com/FusionAuth/fusionauth-swift-sdk/tree/main/Documentation/Reference) for the complete documentation of the SDK.
 
 ### Automated End 2 End Testing
 
@@ -79,10 +79,10 @@ While developing the iOS SDK we made use of Automated End 2 End Testing within t
 <!--
 Maintainer info on how to create the example App manually:
 
-The example App is a copy from https://github.com/sonderformat-llc/fusionauth-swift-sdk/tree/main/Samples/Quickstart by:
+The example App is a copy from https://github.com/FusionAuth/fusionauth-swift-sdk/tree/main/Samples/Quickstart by:
 
 1. Copy the Samples/Quickstart folder in to the complete-application folder
 2. edit the complete-application/fusionauth-quickstart-swift-ios-native.xcodeproj/project.pbxproj file, removing the Packages and sdk references. 
-3. open the project and add the sdk dependency by adding the latest release from https://github.com/sonderformat-llc/fusionauth-swift-sdk/
+3. open the project and add the sdk dependency by adding the latest release from https://github.com/FusionAuth/fusionauth-swift-sdk/
 5. update the docker-compose.yml file to use the latest version used by the sdk
 -->
