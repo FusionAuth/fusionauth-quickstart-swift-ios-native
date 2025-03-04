@@ -13,7 +13,7 @@
     {
       "identity" : "fusionauth-swift-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/sonderformat-llc/fusionauth-swift-sdk",
+      "location" : "https://github.com/FusionAuth/fusionauth-swift-sdk",
       "state" : {
         "revision" : "3c1b56519671a1ad80dc7cd0d09d3c7d1eee6ee4",
         "version" : "0.3.0"

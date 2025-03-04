@@ -525,7 +525,7 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		93AA6A942D6295B900BF9409 /* XCRemoteSwiftPackageReference "fusionauth-swift-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sonderformat-llc/fusionauth-swift-sdk";
+			repositoryURL = "https://github.com/FusionAuth/fusionauth-swift-sdk";
 			requirement = {
 				kind = exactVersion;
 				version = 0.3.0;
