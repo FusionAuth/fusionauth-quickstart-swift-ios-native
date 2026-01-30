@@ -8,6 +8,9 @@ public class FusionAuthStateObject: ObservableObject {
     /// The current authorization state.
     @Published public var authState: FusionAuthState?
 
+    /// The current active configuration name (for display purposes)
+    @Published public var currentConfigurationName: String = "Primary"
+
     /// Initializes a new instance of FusionAuthStateObject.
     public init() {
         AuthorizationManager.instance.eventPublisher
@@ -24,6 +27,12 @@ public class FusionAuthStateObject: ObservableObject {
             return false
         }
         return Date() < authState.accessTokenExpirationTime
+    }
+
+    /// Gets the description of the current configuration
+    /// - Returns: A string describing the current configuration
+    @MainActor public func getCurrentConfigurationDescription() -> String {
+        return ConfigurationManager.getCurrentConfigurationDescription()
     }
 
     /// A set of AnyCancellable to store the Combine subscriptions.

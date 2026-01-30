@@ -63,7 +63,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				93AA6A962D6295B900BF9409 /* FusionAuth in Frameworks */,
-				93B89F712CCA999D006190F3 /* FusionAuth in Frameworks */,
 				0E3A85562BD94071008D2419 /* FusionAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
