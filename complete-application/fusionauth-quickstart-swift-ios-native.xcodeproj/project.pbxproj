@@ -21,6 +21,7 @@
 		0EB100102CD90699007AB813 /* FusionAuth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1000F2CD90699007AB813 /* FusionAuth.plist */; };
 		939AED192CC91492000E2D3F /* QuickstartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939AED162CC91492000E2D3F /* QuickstartTests.swift */; };
 		93AA6A962D6295B900BF9409 /* FusionAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 93AA6A952D6295B900BF9409 /* FusionAuth */; };
+		CD06CFA52F317690007EFF9D /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06CFA42F317690007EFF9D /* ConfigurationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		0E8454CD2BF50D19007C5E0D /* MakeChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeChangeView.swift; sourceTree = "<group>"; };
 		0EB1000F2CD90699007AB813 /* FusionAuth.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FusionAuth.plist; sourceTree = "<group>"; };
 		939AED162CC91492000E2D3F /* QuickstartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickstartTests.swift; sourceTree = "<group>"; };
+		CD06CFA42F317690007EFF9D /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		0E2795F72BD937B800738892 /* Quickstart */ = {
 			isa = PBXGroup;
 			children = (
+				CD06CFA42F317690007EFF9D /* ConfigurationManager.swift */,
 				0E5184922CD627E5004E2416 /* FusionAuthStateObject.swift */,
 				0E2795F82BD937B800738892 /* QuickstartApp.swift */,
 				0E2795FA2BD937B800738892 /* ContentView.swift */,
@@ -250,6 +253,7 @@
 			files = (
 				0E5184932CD627E9004E2416 /* FusionAuthStateObject.swift in Sources */,
 				0E8454CA2BF50C62007C5E0D /* LoggedInView.swift in Sources */,
+				CD06CFA52F317690007EFF9D /* ConfigurationManager.swift in Sources */,
 				0E8454C62BF509C6007C5E0D /* LoginView.swift in Sources */,
 				0E2795FB2BD937B800738892 /* ContentView.swift in Sources */,
 				0E8454CC2BF50CE8007C5E0D /* HomeView.swift in Sources */,
@@ -527,7 +531,7 @@
 			repositoryURL = "https://github.com/FusionAuth/fusionauth-swift-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 0.3.0;
+				version = "1.0.0-rc";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
