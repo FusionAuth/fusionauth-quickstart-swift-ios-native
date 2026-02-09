@@ -531,7 +531,7 @@
 			repositoryURL = "https://github.com/FusionAuth/fusionauth-swift-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = "1.0.0-rc";
+				version = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

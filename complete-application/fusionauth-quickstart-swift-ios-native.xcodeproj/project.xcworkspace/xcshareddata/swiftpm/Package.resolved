@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/FusionAuth/fusionauth-swift-sdk",
       "state" : {
-        "revision" : "0901407cc167c9a1a7614aeaee8585de6d2be5d5",
-        "version" : "1.0.0-rc"
+        "revision" : "3cd295ba4f2c78772b6850a7ba45c5b4f8b90131",
+        "version" : "1.0.0"
       }
     }
   ],
