@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>tenant</key>
+	<string>d7d09513-a3f5-401c-9685-34ab6c552453</string>
 	<key>storage</key>
 	<string>keychain</string>
 	<key>additionalScopes</key>

@@ -1,13 +1,13 @@
 {
-  "originHash" : "53c777d61be3ed95db3abc8e5d1e7b437e3657688e734ecf984f3f3b320ddb28",
+  "originHash" : "a3da1393ec61d3d658b0425ca04a18e63cb44c2feb3600f7ece34cb464850218",
   "pins" : [
     {
       "identity" : "appauth-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS.git",
       "state" : {
-        "revision" : "2781038865a80e2c425a1da12cc1327bcd56501f",
-        "version" : "1.7.6"
+        "revision" : "145104f5ea9d58ae21b60add007c33c1cc0c948e",
+        "version" : "2.0.0"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/FusionAuth/fusionauth-swift-sdk",
       "state" : {
-        "revision" : "3c1b56519671a1ad80dc7cd0d09d3c7d1eee6ee4",
-        "version" : "0.3.0"
+        "revision" : "3cd295ba4f2c78772b6850a7ba45c5b4f8b90131",
+        "version" : "1.0.0"
       }
     }
   ],

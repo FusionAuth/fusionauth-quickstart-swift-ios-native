@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:16.0-bookworm
+    image: postgres:18.1-bookworm
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_USER: ${POSTGRES_USER}
@@ -17,7 +17,7 @@ services:
       - db_data:/var/lib/postgresql/data
 
   search:
-    image: opensearchproject/opensearch:2.11.0
+    image: opensearchproject/opensearch:3.4.0
     environment:
       cluster.name: fusionauth
       discovery.type: single-node
@@ -25,6 +25,7 @@ services:
       plugins.security.disabled: true
       bootstrap.memory_lock: true
       OPENSEARCH_JAVA_OPTS: ${OPENSEARCH_JAVA_OPTS}
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: ${OPENSEARCH_INITIAL_ADMIN_PASSWORD}
     healthcheck:
       interval: 10s
       retries: 80
