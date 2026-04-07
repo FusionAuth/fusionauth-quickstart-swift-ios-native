@@ -48,6 +48,17 @@
       }
     },
     {
+      "method": "PATCH",
+      "url": "api/system-configuration",
+      "body": {
+        "systemConfiguration": {
+          "usageDataConfiguration": {
+            "enabled": true
+          }
+        }
+      }
+    },
+    {
       "method": "POST",
       "url": "/api/user/registration/#{adminUserId}",
       "body": {
@@ -92,7 +103,7 @@
               "authorization_code",
               "refresh_token"
             ],
-            "requireRegistration" : "true"
+            "requireRegistration": "true"
           },
           "jwtConfiguration": {
             "enabled": true,
@@ -121,7 +132,7 @@
               "authorization_code",
               "refresh_token"
             ],
-            "requireRegistration" : "true"
+            "requireRegistration": "true"
           },
           "jwtConfiguration": {
             "enabled": true,
@@ -150,7 +161,7 @@
               "authorization_code",
               "refresh_token"
             ],
-            "requireRegistration" : "true"
+            "requireRegistration": "true"
           },
           "jwtConfiguration": {
             "enabled": true,
@@ -299,7 +310,7 @@
             "registrationVerificationRequired": "@{templates/registrationVerificationRequired.ftl}",
             "registrationVerify": "@{templates/registrationVerify.ftl}",
             "samlv2Logout": "@{templates/samlv2Logout.ftl}",
-            "unauthorized" : "@{templates/unauthorized.ftl}"
+            "unauthorized": "@{templates/unauthorized.ftl}"
           }
         }
       }
