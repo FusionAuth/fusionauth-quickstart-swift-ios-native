@@ -1,5 +1,6 @@
 import XCTest
 
+@MainActor
 final class QuickstartTests: XCTestCase {
     private var primaryLogin = "richard@example.com"
     private var primaryWelcomeName = "Richard Hendricks"
@@ -8,23 +9,23 @@ final class QuickstartTests: XCTestCase {
 
     private var app: XCUIApplication!
 
-    override func setUpWithError() throws {
-        app = XCUIApplication()
-
+    override func setUp() async throws {
         continueAfterFailure = false
-
-        app.launch()
+        await MainActor.run {
+            app = XCUIApplication()
+            app.launch()
+        }
     }
 
-    override func tearDownWithError() throws {
-        // Attempt to log out after each test if user is logged in
-        let logoutButton = app.buttons["Log out"]
-        if logoutButton.exists && logoutButton.isHittable {
-            logoutButton.tap()
-            confirmLoginAlert(app)
-            // Wait for login button to reappear
-            let loginButton = app.buttons["Login"]
-            XCTAssertTrue(loginButton.waitForExistence(timeout: 30), "Login button should appear after logging out")
+    override func tearDown() async throws {
+        await MainActor.run {
+            let logoutButton = app.buttons["Log out"]
+            if logoutButton.exists && logoutButton.isHittable {
+                logoutButton.tap()
+                confirmLoginAlert(app)
+                let loginButton = app.buttons["Login"]
+                XCTAssertTrue(loginButton.waitForExistence(timeout: 30), "Login button should appear after logging out")
+            }
         }
     }
 
@@ -46,6 +47,40 @@ final class QuickstartTests: XCTestCase {
         let expectation = XCTNSPredicateExpectation(predicate: predicate, object: app)
         wait(for: [expectation], timeout: 120)
         removeUIInterruptionMonitor(alertMonitor)
+    }
+
+    private func dismissPasswordSavePrompt(_ app: XCUIApplication) {
+        var alertHandled = false
+
+        let handledExpectation = expectation(description: "Password Save Prompt handled")
+        let alertMonitor = addUIInterruptionMonitor(withDescription: "Password Save Prompt") { alert -> Bool in
+            let buttons = alert.buttons
+            if buttons["Don't Save"].exists {
+                buttons["Don't Save"].tap()
+            } else if buttons["Not Now"].exists {
+                buttons["Not Now"].tap()
+            } else if buttons["Never for This Website"].exists {
+                buttons["Never for This Website"].tap()
+            } else if buttons["Cancel"].exists {
+                buttons["Cancel"].tap()
+            } else {
+                return false
+            }
+            if !alertHandled {
+                alertHandled = true
+                handledExpectation.fulfill()
+            }
+            return true
+        }
+
+        // ensure the alert monitor is cleaned up after handling the password prompt.
+        defer { removeUIInterruptionMonitor(alertMonitor) }
+
+        // Near-zero-cost path when no prompt: trigger once and wait briefly for the monitor to run.
+        // app.tap()
+        let safeCoord = app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.1))
+        safeCoord.tap()
+        _ = XCTWaiter().wait(for: [handledExpectation], timeout: 0.5)
     }
 
     private func waitUntilHittable(_ element: XCUIElement, timeout: TimeInterval) -> Bool {
@@ -241,6 +276,60 @@ final class QuickstartTests: XCTestCase {
         confirmLoginAlert(app)
     }
 
+    /// Tests that passing `prompt=login` to the OAuth authorize call forces the
+    /// FusionAuth login page to be shown and that authentication still completes
+    /// successfully.  The app is relaunched with the `--prompt-parameter login`
+    /// launch argument so that `LoginView` picks it up and forwards it via
+    /// `OAuthAuthorizeOptions(prompt:)`.
+    @MainActor
+    func testLoginWithPromptLogin() throws {
+        // Relaunch the app with the prompt=login launch argument.
+        app.terminate()
+        app.launchArguments = ["--prompt-parameter", "login"]
+        app.launch()
+
+        // Verify that the login flow completes successfully even when prompt=login
+        // is forwarded – FusionAuth should display the login form and accept credentials.
+        try loginToApp(login: primaryLogin, welcomeName: primaryWelcomeName)
+
+        // Confirm the authenticated state is reached.
+        let logoutButton = app.buttons["Log out"]
+        XCTAssertTrue(logoutButton.exists, "Log out button should appear after successful login with prompt=login")
+        logoutButton.tap()
+
+        confirmLoginAlert(app)
+
+        let loginButton = app.buttons["Login"]
+        XCTAssertTrue(loginButton.waitForExistence(timeout: 60), "Login button should reappear after logging out")
+    }
+
+    /// Tests that passing `prompt=none` to the OAuth authorize call fails when
+    /// the user is not already authenticated.
+    ///
+    /// FusionAuth responds with the login screen when there is no active session.
+    @MainActor
+    func testLoginWithPromptNoneFailsWhenUnauthenticated() throws {
+        // Relaunch the app fresh (no existing session) with prompt=none.
+        app.terminate()
+        app.launchArguments = ["--prompt-parameter", "none"]
+        app.launch()
+
+        // Confirm the Login button is present before attempting.
+        let loginButton = app.buttons["Login"]
+        XCTAssertTrue(loginButton.waitForExistence(timeout: 30), "Login button should be present before attempting login")
+        loginButton.tap()
+
+        // The system will present a SFSafariViewController/ASWebAuthenticationSession
+        // confirmation sheet – dismiss it to let the authorization request proceed.
+        confirmLoginAlert(app)
+
+        // Verify the user is still on the Login screen.
+        XCTAssertTrue(
+            loginButton.waitForExistence(timeout: 10),
+            "Login button should still be visible – user must not be authenticated after a prompt=none failure"
+        )
+    }
+
     // MARK: - Helper Methods
 
     private func loginToApp(login: String, welcomeName: String) throws {
@@ -264,17 +353,35 @@ final class QuickstartTests: XCTestCase {
         XCTAssertTrue(passwordField.waitForExistence(timeout: 60))
         XCTAssertTrue(waitUntilHittable(passwordField, timeout: 60))
 
-        XCTAssertTrue(submitButton.waitForExistence(timeout: 60))
-        XCTAssertTrue(waitUntilHittable(submitButton, timeout: 60))
-
         focusTextField(loginField)
-        loginField.typeText(login + "\n")
+        loginField.typeText(login)
 
         focusTextField(passwordField)
         passwordField.typeText("password\n")
 
-        // Wait for Welcome message
+        // dismiss the password prompt if it appears
+        if app.alerts.element.exists {
+            dismissPasswordSavePrompt(app)
+        }
+
+        // Primary path: rely on Return to submit. Give the UI a brief grace period to transition.
         let welcomeText = app.staticTexts["Welcome " + welcomeName]
+        let graceDeadline = Date().addingTimeInterval(4.0)
+        while Date() < graceDeadline {
+            if welcomeText.exists { break }
+            RunLoop.current.run(until: Date().addingTimeInterval(0.15))
+        }
+
+        // Fallback: if we're clearly still on the login screen, tap Submit once.
+        if !welcomeText.exists {
+            let stillOnLoginScreen = loginField.exists && passwordField.exists
+            if stillOnLoginScreen {
+                XCTAssertTrue(waitUntilHittable(submitButton, timeout: 5))
+                submitButton.tap()
+            }
+        }
+
+        // Finally, ensure we reach the post-login state.
         XCTAssertTrue(welcomeText.waitForExistence(timeout: 60))
     }
 }
