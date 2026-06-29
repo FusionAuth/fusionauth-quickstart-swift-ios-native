@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS.git",
       "state" : {
-        "revision" : "145104f5ea9d58ae21b60add007c33c1cc0c948e",
-        "version" : "2.0.0"
+        "revision" : "a7caeda164dc5108bf4649472b28a5af65dc6f33",
+        "version" : "2.1.0"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/FusionAuth/fusionauth-swift-sdk",
       "state" : {
-        "revision" : "1f6af593a9f64260f7197827344d83ca8d40a64e",
-        "version" : "1.2.0"
+        "revision" : "acd677511e7a19e7bc86bb4a9bf7a0807cdc30af",
+        "version" : "1.3.0"
       }
     }
   ],
