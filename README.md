@@ -39,7 +39,7 @@ The FusionAuth configuration files also make use of a unique feature of FusionAu
 
 FusionAuth will be initially configured with these settings:
 * Your client Id is: `21e13847-4f30-4477-a2d9-33c3a80bd15a`
-* Your `Example Android App` test user `richard@example.com` and your password is `password`.
+* Your `Example iOS Quickstart` test user `richard@example.com` and your password is `password`.
 * Your FusionAuth admin username is `admin@example.com` and your password is `password`.
 * Your fusionAuthBaseUrl to access FusionAuth is `http://localhost:9011/`
 
@@ -47,7 +47,7 @@ You can log into the [FusionAuth admin UI](http://localhost:9011/admin) and look
 <!--
 end::forDocSiteDocker[]
 -->
-### Running the Android App
+### Running the iOS App
 <!--
 tag::forDocSiteRun[]
 -->
