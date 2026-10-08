@@ -1,32 +1,22 @@
 # Quickstart: iOS App with FusionAuth Swift SDK
 
+> [!WARNING]
+> This repository is generated from content that lives at [github.com/FusionAuth/fusionauth-site](https://github.com/FusionAuth/fusionauth-site/tree/main/astro/extractedcode/quickstart-swift-ios-native). Changes to files here _will be overwritten by that automation_. File an issue or pull request with [fusionauth-site](https://github.com/FusionAuth/fusionauth-site) instead.
+
 This repository contains an iOS app extracted from the FusionAuth iOS SDK that works with a locally running instance of [FusionAuth](https://fusionauth.io/), the authentication and authorization platform.
-
-<!--
-this and following tags, and the corresponding end tag, are used to delineate what is pulled into the FusionAuth docs site (the client libraries pages). Don't remove unless you also change the docs site.
-
-Please also use ``` instead of indenting for code blocks. The backticks are translated correctly to adoc format.
--->
 
 ## Setup
 
 ### Prerequisites
-<!--
-tag::forDocSitePrerequisites[]
--->
+
 You will need the following things properly installed on your computer.
 
 - [Xcode](https://developer.apple.com/xcode/): The official IDE for iOS helps you develop and install the necessary tools to set it up.
 - [Docker](https://www.docker.com): The quickest way to stand up FusionAuth. Ensure you also have [docker compose](https://docs.docker.com/compose/) installed.
   - (Alternatively, you can [Install FusionAuth Manually](https://fusionauth.io/docs/v1/tech/installation-guide/)).
-<!--
-end::forDocSitePrerequisites[]
--->
 
 ### FusionAuth Installation via Docker
-<!--
-tag::forDocSiteDocker[]
--->
+
 The root of this project directory _(next to this README)_ are two files: [a Docker compose file](./docker-compose.yml) and an [environment variables configuration file](./.env). Assuming you have Docker installed on your machine, you can stand up FusionAuth up on your machine with:
 
 ```bash
@@ -44,22 +34,16 @@ FusionAuth will be initially configured with these settings:
 * Your fusionAuthBaseUrl to access FusionAuth is `http://localhost:9011/`
 
 You can log into the [FusionAuth admin UI](http://localhost:9011/admin) and look around if you want, but with Docker/Kickstart you don't need to.
-<!--
-end::forDocSiteDocker[]
--->
+
 ### Running the iOS App
-<!--
-tag::forDocSiteRun[]
--->
+
 This iOS Quickstart is fully functional and can be used without any modifications:
 
 - Open this project's `complete-application` folder in [Xcode](https://developer.apple.com/xcode/).
 - Either connect an iPhone or create an iPhone Simulator to run the app.
 
 And there are additional [testing instructions](TESTING.md) available for different scenarios.
-<!--
-end::forDocSiteRun[]
--->
+
 ## Further Information
 
 Please follow the following sections for further information about the Quickstart and FusionAuth Swift SDK.
